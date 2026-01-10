@@ -28,6 +28,14 @@ export * as Webpack from "./webpack";
 export * as WebpackPatcher from "./webpack/patchWebpack";
 export { PlainSettings, Settings };
 
+import * as Api from "./api";
+import * as Plugins from "./api/PluginManager";
+import * as Components from "./components";
+import * as Util from "./utils";
+import * as Updater from "./utils/updater";
+import * as Webpack from "./webpack";
+import * as WebpackPatcher from "./webpack/patchWebpack";
+
 import { coreStyleRootNode, initStyles } from "@api/Styles";
 import { openSettingsTabModal, UpdaterTab } from "@components/settings";
 import { debounce } from "@shared/debounce";
@@ -175,6 +183,21 @@ async function init() {
                 "\n\n" + pendingPatches.map(p => `${p.plugin}: ${p.find}`).join("\n")
             );
     }
+}
+
+// Expose CeoCord to window for web access
+if (IS_WEB || IS_EXTENSION) {
+    window.CeoCord = {
+        Api,
+        Plugins,
+        Components,
+        Util,
+        Updater,
+        Webpack,
+        WebpackPatcher,
+        Settings,
+        PlainSettings
+    };
 }
 
 initPluginManager();
