@@ -207,12 +207,12 @@ export default definePlugin({
     getSettingsSectionMappings() {
         return [
             ["CeoCordSettings", "CeoCord_main_panel"],
-            ["VencordPlugins", "CeoCord_plugins_panel"],
+            ["CeoCordPlugins", "CeoCord_plugins_panel"],
             ["CeoCordThemes", "CeoCord_themes_panel"],
-            ["VencordUpdater", "CeoCord_updater_panel"],
+            ["CeoCordUpdater", "CeoCord_updater_panel"],
             ["CeoCordCloud", "CeoCord_cloud_panel"],
-            ["VencordBackupAndRestore", "CeoCord_backup_restore_panel"],
-            ["VencordPatchHelper", "CeoCord_patch_helper_panel"]
+            ["CeoCordBackupAndRestore", "CeoCord_backup_restore_panel"],
+            ["CeoCordPatchHelper", "CeoCord_patch_helper_panel"]
         ];
     },
 
@@ -336,7 +336,7 @@ export default definePlugin({
                 className: "vc-settings"
             },
             {
-                section: "VencordPlugins",
+                section: "CeoCordPlugins",
                 label: "Plugins",
                 element: PluginsTab,
                 className: "vc-plugins"
@@ -348,7 +348,7 @@ export default definePlugin({
                 className: "vc-themes"
             },
             !IS_UPDATER_DISABLED && {
-                section: "VencordUpdater",
+                section: "CeoCordUpdater",
                 label: "Updater",
                 element: UpdaterTab,
                 className: "vc-updater"
@@ -360,13 +360,13 @@ export default definePlugin({
                 className: "vc-cloud"
             },
             {
-                section: "VencordBackupAndRestore",
+                section: "CeoCordBackupAndRestore",
                 label: "Backup & Restore",
                 element: BackupAndRestoreTab,
                 className: "vc-backup-restore"
             },
             IS_DEV && {
-                section: "VencordPatchHelper",
+                section: "CeoCordPatchHelper",
                 label: "Patch Helper",
                 element: PatchHelperTab,
                 className: "vc-patch-helper"
