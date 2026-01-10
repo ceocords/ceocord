@@ -18,7 +18,7 @@
 
 import { definePluginSettings } from "@api/Settings";
 import { BackupRestoreIcon, CloudIcon, MainSettingsIcon, PaintbrushIcon, PatchHelperIcon, PlaceholderIcon, PluginsIcon, UpdaterIcon, VesktopSettingsIcon } from "@components/Icons";
-import { CeoCordTab } from "@components/settings/tabs";
+import { BackupAndRestoreTab, CeoCordTab, CloudTab, PatchHelperTab, PluginsTab, ThemesTab, UpdaterTab } from "@components/settings/tabs";
 import { Devs } from "@utils/constants";
 import { getIntlMessage } from "@utils/discord";
 import { isTruthy } from "@utils/guards";
