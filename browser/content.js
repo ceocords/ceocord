@@ -6,7 +6,7 @@ document.addEventListener(
     "DOMContentLoaded",
     () => {
         window.postMessage({
-            type: "vencord:meta",
+            type: "ceocord:meta",
             meta: {
                 EXTENSION_VERSION: browser.runtime.getManifest().version,
                 EXTENSION_BASE_URL: browser.runtime.getURL(""),

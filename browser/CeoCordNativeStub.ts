@@ -58,8 +58,8 @@ window.CeoCordNative = {
         openExternal: async (url) => void open(url, "_blank"),
         getRendererCss: async () => {
             if (IS_USERSCRIPT)
-                // need to wait for next tick for _vcUserScriptRendererCss to be set
-                return Promise.resolve().then(() => window._vcUserScriptRendererCss);
+                // need to wait for next tick for _ceocordUserScriptRendererCss to be set
+                return Promise.resolve().then(() => window._ceocordUserScriptRendererCss);
 
             await metaReady;
 
