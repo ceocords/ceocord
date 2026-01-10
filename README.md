@@ -1,6 +1,6 @@
 # CeoCord
 
-![](https://img.shields.io/github/package-json/v/Vendicated/CeoCord?style=for-the-badge&logo=github&logoColor=d3869b&label=&color=1d2021&labelColor=282828)
+![](https://img.shields.io/github/package-json/v/ceocord/ceocords?style=for-the-badge&logo=github&logoColor=d3869b&label=&color=1d2021&labelColor=282828)
 
 The cutest Discord client mod
 

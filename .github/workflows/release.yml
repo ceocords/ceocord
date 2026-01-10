@@ -46,7 +46,9 @@ jobs:
         env:
           CEOCORD_HASH: ${{ github.sha }}
           CEOCORD_REMOTE: ceocord/ceocords
-        run: pnpm build
+        run: |
+          pnpm build
+          pnpm buildStandalone
       
       - name: Create Installer Package
         shell: bash
