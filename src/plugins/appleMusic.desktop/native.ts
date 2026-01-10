@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import { CeoCord_USER_AGENT } from "@shared/ceocordUserAgent";
+import { CEOCORD_USER_AGENT } from "@shared/ceocordUserAgent";
 import { execFile } from "child_process";
 import { promisify } from "util";
 
@@ -40,7 +40,7 @@ async function fetchRemoteData({ id, name, artist, album }: { id: string, name: 
 
         const songData = await fetch(dataUrl, {
             headers: {
-                "user-agent": CeoCord_USER_AGENT,
+                "user-agent": CEOCORD_USER_AGENT,
             },
         })
             .then(r => r.json())

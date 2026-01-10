@@ -19,7 +19,7 @@
 import * as DataStore from "@api/DataStore";
 import { Settings } from "@api/Settings";
 import { Flex } from "@components/Flex";
-import { openNotificationSettingsModal } from "../Notifications/NotificationComponent";
+import { openNotificationSettingsModal } from "@components/settings/tabs/ceocord/NotificationSettings";
 import { classNameFactory } from "@utils/css";
 import { closeModal, ModalCloseButton, ModalFooter, ModalHeader, ModalProps, ModalRoot, ModalSize, openModal } from "@utils/modal";
 import { useAwaiter } from "@utils/react";
