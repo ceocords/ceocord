@@ -28,7 +28,7 @@ import { installExt } from "./utils/extensions";
 
 if (IS_VESKTOP || !IS_VANILLA) {
     app.whenReady().then(() => {
-        protocol.handle("CeoCord", ({ url: unsafeUrl }) => {
+        protocol.handle("CeoCord", async ({ url: unsafeUrl }) => {
             let url = decodeURI(unsafeUrl).slice("ceocord://".length).replace(/\?v=\d+$/, "");
 
             if (url.endsWith("/")) url = url.slice(0, -1);
@@ -43,7 +43,19 @@ if (IS_VESKTOP || !IS_VANILLA) {
                     });
                 }
 
-                return net.fetch(pathToFileURL(safeUrl).toString());
+                try {
+                    const fs = await import("fs/promises");
+                    const css = await fs.readFile(safeUrl, "utf-8");
+                    return new Response(css, {
+                        headers: {
+                            "Content-Type": "text/css; charset=utf-8"
+                        }
+                    });
+                } catch (err) {
+                    return new Response(null, {
+                        status: 404
+                    });
+                }
             }
 
             // Source Maps! Maybe there's a better way but since the renderer is executed
