@@ -53,7 +53,7 @@ export function Switch({ checked, onChange, disabled }: SwitchProps) {
                 <div
                     className={switchCls("slider")}
                     style={{
-                        transform: checked ? "translateX(20px)" : "translateX(2px)",
+                        transform: checked ? "translateX(20px)" : "translateX(3px)",
                     }}
                 >
                     {checked && (
@@ -67,6 +67,7 @@ export function Switch({ checked, onChange, disabled }: SwitchProps) {
                                 top: "50%",
                                 left: "50%",
                                 transform: "translate(-50%, -50%)",
+                                pointerEvents: "none",
                             }}
                         >
                             <path
