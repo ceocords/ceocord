@@ -57,15 +57,23 @@ export function initStyles() {
     const vesktopCssNode = IS_VESKTOP ? createAndAppendStyle("vesktop-css-core", coreStyleRootNode) : null;
     createAndAppendStyle("ceocord-margins", coreStyleRootNode).textContent = generateMarginCss();
 
-    // CRITICAL: Hide ALL Discord checkboxes in CeoCord settings
+    // CRITICAL: Hide ALL Discord checkboxes in CeoCord settings - ULTRA AGGRESSIVE
     const checkboxHideStyle = createAndAppendStyle("ceocord-hide-checkboxes", coreStyleRootNode);
     checkboxHideStyle.textContent = `
-        /* Hide ALL Discord checkboxes in CeoCord settings */
+        /* Hide ALL Discord checkboxes in CeoCord settings - ULTRA AGGRESSIVE */
         .vc-settings-tab input[type="checkbox"]:not(.vc-switch-input),
         .vc-form-switch-wrapper input[type="checkbox"]:not(.vc-switch-input),
         .vc-form-switch input[type="checkbox"]:not(.vc-switch-input),
+        .vc-form-switch-wrapper > input[type="checkbox"]:not(.vc-switch-input),
+        .vc-form-switch > input[type="checkbox"]:not(.vc-switch-input),
         input._3f21e80f8677ec40-input:not(.vc-switch-input),
-        input[class*="_3f21e80f8677ec40-input"]:not(.vc-switch-input) {
+        input[class*="_3f21e80f8677ec40-input"]:not(.vc-switch-input),
+        input[class*="input"][type="checkbox"]:not(.vc-switch-input),
+        input[class*="_"][type="checkbox"]:not(.vc-switch-input),
+        /* Hide ALL checkboxes that are NOT our Switch component */
+        .vc-settings-tab [type="checkbox"]:not(.vc-switch-input),
+        .vc-form-switch-wrapper [type="checkbox"]:not(.vc-switch-input),
+        .vc-form-switch [type="checkbox"]:not(.vc-switch-input) {
             display: none !important;
             visibility: hidden !important;
             opacity: 0 !important;
@@ -83,13 +91,27 @@ export function initStyles() {
             -moz-appearance: none !important;
         }
 
-        /* Force Switch component to be visible */
+        /* Force Switch component to be visible and properly sized */
         .vc-switch-wrapper,
         .vc-switch-container {
             display: inline-block !important;
             visibility: visible !important;
             opacity: 1 !important;
             z-index: 999999 !important;
+            width: 44px !important;
+            height: 24px !important;
+            min-width: 44px !important;
+            min-height: 24px !important;
+            max-width: 44px !important;
+            max-height: 24px !important;
+        }
+
+        /* Ensure slider is visible and properly positioned */
+        .vc-switch-slider {
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            z-index: 1000000 !important;
         }
     `;
 
