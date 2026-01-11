@@ -21,7 +21,7 @@ import { createAndAppendStyle } from "@utils/css";
 import { ThemeStore } from "@ceocord/discord-types";
 import { PopoutWindowStore } from "@webpack/common";
 
-import { CeoCordRootNode } from "./Styles";
+import { CeoCordRootNode, userStyleRootNode } from "./Styles";
 
 let style: HTMLStyleElement;
 let themesStyle: HTMLStyleElement;
@@ -29,7 +29,7 @@ let themesStyle: HTMLStyleElement;
 async function toggle(isEnabled: boolean) {
     if (!style) {
         if (isEnabled) {
-            style = createAndAppendStyle("vencord-custom-css", userStyleRootNode);
+            style = createAndAppendStyle("ceocord-custom-css", userStyleRootNode);
             CeoCordNative.quickCss.addChangeListener(css => {
                 style.textContent = css;
                 // At the time of writing this, changing textContent resets the disabled state
@@ -43,7 +43,7 @@ async function toggle(isEnabled: boolean) {
 }
 
 async function initThemes() {
-    themesStyle ??= createAndAppendStyle("vencord-themes", userStyleRootNode);
+    themesStyle ??= createAndAppendStyle("ceocord-themes", userStyleRootNode);
 
     const { themeLinks, enabledThemes } = Settings;
 
@@ -88,9 +88,9 @@ function applyToPopout(popoutWindow: Window | undefined, key: string) {
 
     const doc = popoutWindow.document;
 
-    doc.querySelector("vencord-root")?.remove();
+    doc.querySelector("ceocord-root")?.remove();
 
-    doc.documentElement.appendChild(vencordRootNode.cloneNode(true));
+    doc.documentElement.appendChild(CeoCordRootNode.cloneNode(true));
 }
 
 function updatePopoutWindows() {
