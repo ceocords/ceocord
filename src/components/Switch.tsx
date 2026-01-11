@@ -52,35 +52,35 @@ export function Switch({ checked, onChange, disabled }: SwitchProps) {
             <div className={classes(switchCls("container", { checked, disabled, focusVisible }))}>
                 <svg
                     className={switchCls("slider")}
-                    viewBox="0 0 20 20"
+                    viewBox="0 0 16 16"
                     preserveAspectRatio="xMidYMid meet"
                     aria-hidden="true"
                     style={{
-                        transform: checked ? "translateX(20px)" : "translateX(0px)",
+                        transform: checked ? "translateX(24px)" : "translateX(0px)",
                     }}
                 >
-                    <circle fill="white" cx="10" cy="10" r="10" />
-                    {checked ? (
-                        <path 
-                            d="M6 10L9 13L14 7"
-                            stroke={SWITCH_ON}
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            fill="none"
-                            style={{ transform: "scale(0.4)", transformOrigin: "center" }}
-                        />
-                    ) : (
-                        <path 
-                            d="M7 7L13 13M13 7L7 13"
-                            stroke={SWITCH_OFF}
-                            strokeWidth="1.8"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            fill="none"
-                            style={{ transform: "scale(0.4)", transformOrigin: "center" }}
-                        />
-                    )}
+                    <circle fill="white" cx="8" cy="8" r="8" />
+                    <g transform="translate(8, 8) scale(0.35) translate(-8, -8)">
+                        {checked ? (
+                            <path 
+                                d="M6 10L9 13L14 7"
+                                stroke={SWITCH_ON}
+                                strokeWidth="2.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                fill="none"
+                            />
+                        ) : (
+                            <path 
+                                d="M7 7L13 13M13 7L7 13"
+                                stroke={SWITCH_OFF}
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                fill="none"
+                            />
+                        )}
+                    </g>
                 </svg>
                 <input
                     onFocus={handleFocusChange}
