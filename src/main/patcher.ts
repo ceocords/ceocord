@@ -23,7 +23,7 @@ import { dirname, join } from "path";
 import { RendererSettings } from "./settings";
 import { IS_VANILLA } from "./utils/constants";
 
-console.log("[Vencord] Starting up...");
+console.log("[CeoCord] Starting up...");
 
 // Our injector file at app/index.js
 const injectorPath = require.main!.filename;
@@ -155,8 +155,8 @@ if (!IS_VANILLA) {
     app.commandLine.appendSwitch("disable-background-timer-throttling");
     app.commandLine.appendSwitch("disable-backgrounding-occluded-windows");
 } else {
-    console.log("[Vencord] Running in vanilla mode. Not loading CeoCord");
+    console.log("[CeoCord] Running in vanilla mode. Not loading CeoCord");
 }
 
-console.log("[Vencord] Loading original Discord app.asar");
+console.log("[CeoCord] Loading original Discord app.asar");
 require(require.main!.filename);
