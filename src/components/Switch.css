@@ -96,9 +96,39 @@
 .vc-switch-container input[type="checkbox"],
 .vc-switch-wrapper input[type="checkbox"],
 .vc-form-switch input[type="checkbox"],
-.vc-addon-card input[type="checkbox"] {
+.vc-addon-card input[type="checkbox"],
+.vc-switch-container > input,
+.vc-switch-wrapper > input,
+.vc-form-switch > input,
+.vc-addon-card > input {
     appearance: none !important;
     -webkit-appearance: none !important;
     -moz-appearance: none !important;
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    position: absolute !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    clip: rect(0, 0, 0, 0) !important;
+}
+
+/* Ensure our switch container is visible and properly styled */
+.vc-switch-container,
+.vc-switch-wrapper {
+    display: inline-block !important;
+    vertical-align: middle !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Hide any Discord checkbox that might be rendered */
+.vc-form-switch-wrapper input[type="checkbox"]:not(.vc-switch-input),
+.vc-addon-card input[type="checkbox"]:not(.vc-switch-input) {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
 }
