@@ -45,6 +45,11 @@ async function toggle(isEnabled: boolean) {
 async function initThemes() {
     themesStyle ??= createAndAppendStyle("ceocord-themes", userStyleRootNode);
 
+    // Remove old theme styles on desktop before reloading
+    if (!IS_WEB) {
+        userStyleRootNode.querySelectorAll("style[data-ceocord-theme]").forEach(el => el.remove());
+    }
+
     const { themeLinks, enabledThemes } = Settings;
 
     const { ThemeStore } = require("@webpack/common/stores") as typeof import("@webpack/common/stores");
@@ -73,11 +78,23 @@ async function initThemes() {
             links.push(URL.createObjectURL(blob));
         }
     } else {
-        const localThemes = enabledThemes.map(theme => `ceocord:///themes/${theme}?v=${Date.now()}`);
-        links.push(...localThemes);
+        // Desktop: Load theme CSS directly instead of using @import with custom protocol
+        // because Electron's CSS @import doesn't support custom protocols reliably
+        for (const theme of enabledThemes) {
+            const themeData = await CeoCordNative.themes.getThemeData(theme);
+            if (!themeData) continue;
+            // Inject CSS directly into the style element
+            const style = document.createElement("style");
+            style.setAttribute("data-ceocord-theme", theme);
+            style.textContent = themeData;
+            userStyleRootNode.appendChild(style);
+        }
     }
 
-    themesStyle.textContent = links.map(link => `@import url("${link.trim()}");`).join("\n");
+    // Only use @import for web or external theme links
+    if (links.length > 0) {
+        themesStyle.textContent = links.map(link => `@import url("${link.trim()}");`).join("\n");
+    }
     updatePopoutWindows();
 }
 
