@@ -13,8 +13,19 @@
 
 .vc-plugin-ui-elements-button-arrow {
     margin-left: auto;
-    width: 24px;
-    height: 24px;
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    max-width: 16px;
+    max-height: 16px;
+    flex-shrink: 0;
+    opacity: 0.6;
+    transition: opacity 0.2s ease-out;
+}
+
+.vc-plugin-ui-elements-button:hover .vc-plugin-ui-elements-button-arrow {
+    opacity: 1;
 }
 
 .vc-plugin-ui-elements-modal-content {
