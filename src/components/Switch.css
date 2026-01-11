@@ -100,6 +100,7 @@ input[class*="_3f21e80f8677ec40-input"],
     position: absolute !important;
     top: 3px !important;
     left: 50% !important;
+    transform: translateX(-50%) !important;
     transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1) !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24) !important;
     overflow: visible !important;
@@ -107,6 +108,16 @@ input[class*="_3f21e80f8677ec40-input"],
     padding: 0 !important;
     margin: 0 !important;
     box-sizing: border-box !important;
+    z-index: 100001 !important;
+}
+
+.vc-switch-slider {
+    transform: translateX(calc(-50% - 10px)) !important;
+}
+
+.vc-switch-container.vc-switch-checked .vc-switch-slider,
+.vc-switch-slider.vc-switch-slider-checked {
+    transform: translateX(calc(-50% + 10px)) !important;
 }
 
 .vc-switch-slider svg {

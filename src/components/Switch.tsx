@@ -51,10 +51,7 @@ export function Switch({ checked, onChange, disabled }: SwitchProps) {
         <div className={switchCls("wrapper")}>
             <div className={classes(switchCls("container", { checked, disabled, focusVisible }))}>
                 <div
-                    className={switchCls("slider")}
-                    style={{
-                        transform: checked ? "translateX(calc(-50% + 10px))" : "translateX(calc(-50% - 10px))",
-                    }}
+                    className={classes(switchCls("slider"), checked && switchCls("slider-checked"))}
                 >
                     {checked ? (
                         <svg

@@ -91,59 +91,111 @@ export function Updatable(props: CommonProps) {
 
             {isOutdated && <Changes updates={updates} {...props} />}
 
-            <Flex className={classes(Margins.bottom8, Margins.top8)}>
-                {isOutdated && (
+            <Card
+                style={{
+                    background: "linear-gradient(135deg, rgba(236, 72, 153, 0.1) 0%, rgba(219, 39, 119, 0.15) 100%)",
+                    border: "1px solid rgba(236, 72, 153, 0.2)",
+                    borderRadius: "16px",
+                    padding: "20px",
+                    marginTop: "16px",
+                    marginBottom: "16px",
+                    boxShadow: "0 4px 20px rgba(236, 72, 153, 0.1), 0 0 0 1px rgba(236, 72, 153, 0.05)",
+                    backdropFilter: "blur(10px)"
+                }}
+                defaultPadding={false}
+            >
+                <Flex className={classes(Margins.bottom0, Margins.top0)} style={{ gap: "12px", flexWrap: "wrap" }}>
+                    {isOutdated && (
+                        <Button
+                            size={Button.Sizes.SMALL}
+                            disabled={isUpdating || isChecking}
+                            onClick={runWithDispatch(setIsUpdating, async () => {
+                                if (await update()) {
+                                    setUpdates([]);
+
+                                    await new Promise<void>(r => {
+                                        Alerts.show({
+                                            title: "Update Success!",
+                                            body: "Successfully updated. Restart now to apply the changes?",
+                                            confirmText: "Restart",
+                                            cancelText: "Not now!",
+                                            onConfirm() {
+                                                relaunch();
+                                                r();
+                                            },
+                                            onCancel: r
+                                        });
+                                    });
+                                }
+                            })}
+                            style={{
+                                background: "linear-gradient(135deg, rgba(236, 72, 153, 0.15) 0%, rgba(219, 39, 119, 0.2) 100%)",
+                                border: "1px solid rgba(236, 72, 153, 0.3)",
+                                borderRadius: "12px",
+                                color: "rgba(236, 72, 153, 0.95)",
+                                fontWeight: 600,
+                                transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+                                boxShadow: "0 2px 8px rgba(236, 72, 153, 0.15)"
+                            }}
+                            onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
+                                e.currentTarget.style.background = "linear-gradient(135deg, rgba(236, 72, 153, 0.25) 0%, rgba(219, 39, 119, 0.3) 100%)";
+                                e.currentTarget.style.transform = "translateY(-2px)";
+                                e.currentTarget.style.boxShadow = "0 4px 12px rgba(236, 72, 153, 0.25)";
+                            }}
+                            onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
+                                e.currentTarget.style.background = "linear-gradient(135deg, rgba(236, 72, 153, 0.15) 0%, rgba(219, 39, 119, 0.2) 100%)";
+                                e.currentTarget.style.transform = "translateY(0)";
+                                e.currentTarget.style.boxShadow = "0 2px 8px rgba(236, 72, 153, 0.15)";
+                            }}
+                        >
+                            Update Now
+                        </Button>
+                    )}
                     <Button
                         size={Button.Sizes.SMALL}
                         disabled={isUpdating || isChecking}
-                        onClick={runWithDispatch(setIsUpdating, async () => {
-                            if (await update()) {
+                        onClick={runWithDispatch(setIsChecking, async () => {
+                            const outdated = await checkForUpdates();
+
+                            if (outdated) {
+                                setUpdates(changes);
+                            } else {
                                 setUpdates([]);
 
-                                await new Promise<void>(r => {
-                                    Alerts.show({
-                                        title: "Update Success!",
-                                        body: "Successfully updated. Restart now to apply the changes?",
-                                        confirmText: "Restart",
-                                        cancelText: "Not now!",
-                                        onConfirm() {
-                                            relaunch();
-                                            r();
-                                        },
-                                        onCancel: r
-                                    });
+                                Toasts.show({
+                                    message: "No updates found!",
+                                    id: Toasts.genId(),
+                                    type: Toasts.Type.MESSAGE,
+                                    options: {
+                                        position: Toasts.Position.BOTTOM
+                                    }
                                 });
                             }
                         })}
+                        style={{
+                            background: "linear-gradient(135deg, rgba(236, 72, 153, 0.15) 0%, rgba(219, 39, 119, 0.2) 100%)",
+                            border: "1px solid rgba(236, 72, 153, 0.3)",
+                            borderRadius: "12px",
+                            color: "rgba(236, 72, 153, 0.95)",
+                            fontWeight: 600,
+                            transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+                            boxShadow: "0 2px 8px rgba(236, 72, 153, 0.15)"
+                        }}
+                        onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
+                            e.currentTarget.style.background = "linear-gradient(135deg, rgba(236, 72, 153, 0.25) 0%, rgba(219, 39, 119, 0.3) 100%)";
+                            e.currentTarget.style.transform = "translateY(-2px)";
+                            e.currentTarget.style.boxShadow = "0 4px 12px rgba(236, 72, 153, 0.25)";
+                        }}
+                        onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
+                            e.currentTarget.style.background = "linear-gradient(135deg, rgba(236, 72, 153, 0.15) 0%, rgba(219, 39, 119, 0.2) 100%)";
+                            e.currentTarget.style.transform = "translateY(0)";
+                            e.currentTarget.style.boxShadow = "0 2px 8px rgba(236, 72, 153, 0.15)";
+                        }}
                     >
-                        Update Now
+                        Check for Updates
                     </Button>
-                )}
-                <Button
-                    size={Button.Sizes.SMALL}
-                    disabled={isUpdating || isChecking}
-                    onClick={runWithDispatch(setIsChecking, async () => {
-                        const outdated = await checkForUpdates();
-
-                        if (outdated) {
-                            setUpdates(changes);
-                        } else {
-                            setUpdates([]);
-
-                            Toasts.show({
-                                message: "No updates found!",
-                                id: Toasts.genId(),
-                                type: Toasts.Type.MESSAGE,
-                                options: {
-                                    position: Toasts.Position.BOTTOM
-                                }
-                            });
-                        }
-                    })}
-                >
-                    Check for Updates
-                </Button>
-            </Flex>
+                </Flex>
+            </Card>
         </>
     );
 }

@@ -57,6 +57,42 @@ export function initStyles() {
     const vesktopCssNode = IS_VESKTOP ? createAndAppendStyle("vesktop-css-core", coreStyleRootNode) : null;
     createAndAppendStyle("ceocord-margins", coreStyleRootNode).textContent = generateMarginCss();
 
+    // CRITICAL: Hide ALL Discord checkboxes in CeoCord settings
+    const checkboxHideStyle = createAndAppendStyle("ceocord-hide-checkboxes", coreStyleRootNode);
+    checkboxHideStyle.textContent = `
+        /* Hide ALL Discord checkboxes in CeoCord settings */
+        .vc-settings-tab input[type="checkbox"]:not(.vc-switch-input),
+        .vc-form-switch-wrapper input[type="checkbox"]:not(.vc-switch-input),
+        .vc-form-switch input[type="checkbox"]:not(.vc-switch-input),
+        input._3f21e80f8677ec40-input:not(.vc-switch-input),
+        input[class*="_3f21e80f8677ec40-input"]:not(.vc-switch-input) {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            position: absolute !important;
+            width: 0 !important;
+            height: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: none !important;
+            clip: rect(0, 0, 0, 0) !important;
+            pointer-events: none !important;
+            z-index: -1 !important;
+            appearance: none !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+        }
+
+        /* Force Switch component to be visible */
+        .vc-switch-wrapper,
+        .vc-switch-container {
+            display: inline-block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            z-index: 999999 !important;
+        }
+    `;
+
     CeoCordNative.native.getRendererCss().then(css => rendererCssNode.textContent = css);
     if (IS_DEV) {
         CeoCordNative.native.onRendererCssUpdate(newCss => {
