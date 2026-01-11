@@ -19,6 +19,7 @@
     display: inline-block !important;
     vertical-align: middle !important;
     flex-shrink: 0 !important;
+    overflow: hidden !important;
 
     .high-contrast-mode & {
         border-color: var(--border-strong) !important;
@@ -28,6 +29,12 @@
 .vc-switch-container.vc-switch-checked {
     background: var(--brand-500) !important;
     border-color: var(--control-primary-border-default) !important;
+}
+
+/* Force switch to look like Discord's standard switch */
+.vc-switch-container::before {
+    content: "" !important;
+    display: none !important;
 }
 
 .vc-switch-container.vc-switch-disabled {
