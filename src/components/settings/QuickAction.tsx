@@ -25,7 +25,7 @@ export function QuickAction(props: QuickActionProps) {
     return (
         <button className={cl("pill")} onClick={action} disabled={disabled}>
             <Icon className={cl("img")} />
-            {text}
+            <span>{text}</span>
         </button>
     );
 }

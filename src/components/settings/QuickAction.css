@@ -1,9 +1,12 @@
 .vc-settings-quickActions-card {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.5em;
-    padding: 0.5em;
-    margin-bottom: 1em;
+    gap: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    background: var(--card-background-default);
+    border-radius: 8px;
+    border: 1px solid var(--border-subtle);
 }
 
 @media (width <=1040px) {
@@ -12,23 +15,40 @@
     }
 }
 
+@media (width <=600px) {
+    .vc-settings-quickActions-card {
+        grid-template-columns: 1fr;
+    }
+}
+
 .vc-settings-quickActions-pill {
     all: unset;
-    background: var(--redesign-button-secondary-background);
+    background: var(--background-secondary);
     color: var(--text-default);
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 0.5em;
-    padding: 8px 9px;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 12px;
     border-radius: 8px;
-    transition: 0.1s ease-out;
+    transition: all 0.15s ease-out;
     box-sizing: border-box;
+    cursor: pointer;
+    border: 1px solid var(--border-subtle);
+    min-height: 80px;
 }
 
 .vc-settings-quickActions-pill:hover {
-    background: var(--redesign-button-secondary-pressed-background);
-    transform: translateY(-1px);
-    box-shadow: var(--elevation-high);
+    background: var(--background-mod-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: var(--border-subtle);
+}
+
+.vc-settings-quickActions-pill:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .vc-settings-quickActions-pill:focus-visible {
@@ -36,7 +56,29 @@
     outline-offset: 2px;
 }
 
+.vc-settings-quickActions-pill:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
 .vc-settings-quickActions-img {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    color: var(--interactive-icon-default);
+    transition: color 0.15s ease-out;
+}
+
+.vc-settings-quickActions-pill:hover .vc-settings-quickActions-img {
+    color: var(--interactive-icon-hover);
+}
+
+.vc-settings-quickActions-pill > span,
+.vc-settings-quickActions-pill > *:not(.vc-settings-quickActions-img) {
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.4;
+    color: var(--text-default);
 }
