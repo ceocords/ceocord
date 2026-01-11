@@ -42,14 +42,22 @@ export function wrapTab(component: ComponentType<any>, tab: string) {
 
 export function openSettingsTabModal(Tab: ComponentType<any>) {
     try {
-        openModal(wrapTab((modalProps: ModalProps) => (
-            <ModalRoot {...modalProps} size={ModalSize.MEDIUM}>
-                <ModalContent className="vc-settings-modal">
-                    <ModalCloseButton onClick={modalProps.onClose} className="vc-settings-modal-close" />
-                    <Tab />
-                </ModalContent>
-            </ModalRoot>
-        ), Tab.displayName || "Settings Tab"));
+        const WrappedTab = wrapTab((modalProps: ModalProps) => {
+            const handleClose = () => {
+                modalProps.onClose();
+            };
+            
+            return (
+                <ModalRoot {...modalProps} size={ModalSize.MEDIUM}>
+                    <ModalContent className="vc-settings-modal">
+                        <ModalCloseButton onClick={handleClose} className="vc-settings-modal-close" />
+                        <Tab />
+                    </ModalContent>
+                </ModalRoot>
+            );
+        }, Tab.displayName || "Settings Tab");
+        
+        openModal(WrappedTab);
     } catch {
         handleSettingsTabError();
     }
