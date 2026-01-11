@@ -64,7 +64,7 @@ export function Switch({ checked, onChange, disabled }: SwitchProps) {
                         {checked ? (
                             <path 
                                 d="M6 10L9 13L14 7"
-                                stroke="white"
+                                stroke={SWITCH_ON}
                                 strokeWidth="2.5"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
@@ -73,7 +73,7 @@ export function Switch({ checked, onChange, disabled }: SwitchProps) {
                         ) : (
                             <path 
                                 d="M7 7L13 13M13 7L7 13"
-                                stroke="white"
+                                stroke={SWITCH_OFF}
                                 strokeWidth="2"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
