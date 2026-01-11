@@ -40,6 +40,9 @@ export function UIElementsButton() {
                     className={cl("button-arrow")}
                     aria-hidden="true"
                     viewBox="0 0 24 24"
+                    width="12"
+                    height="12"
+                    style={{ width: "12px", height: "12px", flexShrink: 0 }}
                 >
                     <path fill="currentColor" d="M9.3 5.3a1 1 0 0 0 0 1.4l5.29 5.3-5.3 5.3a1 1 0 1 0 1.42 1.4l6-6a1 1 0 0 0 0-1.4l-6-6a1 1 0 0 0-1.42 0Z" />
                 </svg>

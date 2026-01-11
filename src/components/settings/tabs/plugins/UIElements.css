@@ -12,20 +12,35 @@
 }
 
 .vc-plugin-ui-elements-button-arrow {
-    margin-left: auto;
-    width: 16px;
-    height: 16px;
-    min-width: 16px;
-    min-height: 16px;
-    max-width: 16px;
-    max-height: 16px;
-    flex-shrink: 0;
-    opacity: 0.6;
-    transition: opacity 0.2s ease-out;
+    margin-left: auto !important;
+    width: 12px !important;
+    height: 12px !important;
+    min-width: 12px !important;
+    min-height: 12px !important;
+    max-width: 12px !important;
+    max-height: 12px !important;
+    flex-shrink: 0 !important;
+    opacity: 0.5 !important;
+    transition: opacity 0.2s ease-out !important;
+    display: block !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
 }
 
 .vc-plugin-ui-elements-button:hover .vc-plugin-ui-elements-button-arrow {
-    opacity: 1;
+    opacity: 0.8 !important;
+}
+
+/* Force arrow to be small - override any Discord styles */
+.vc-plugin-ui-elements-button svg,
+.vc-plugin-ui-elements-button-arrow svg,
+.vc-plugin-ui-elements-button .vc-plugin-ui-elements-button-arrow {
+    width: 12px !important;
+    height: 12px !important;
+    max-width: 12px !important;
+    max-height: 12px !important;
+    min-width: 12px !important;
+    min-height: 12px !important;
 }
 
 .vc-plugin-ui-elements-modal-content {
