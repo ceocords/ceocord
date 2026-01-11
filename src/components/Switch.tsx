@@ -52,15 +52,15 @@ export function Switch({ checked, onChange, disabled }: SwitchProps) {
             <div className={classes(switchCls("container", { checked, disabled, focusVisible }))}>
                 <svg
                     className={switchCls("slider")}
-                    viewBox="0 0 16 16"
+                    viewBox="0 0 18 18"
                     preserveAspectRatio="xMidYMid meet"
                     aria-hidden="true"
                     style={{
-                        transform: checked ? "translateX(24px)" : "translateX(0px)",
+                        transform: checked ? "translateX(16px)" : "translateX(0px)",
                     }}
                 >
-                    <circle fill="white" cx="8" cy="8" r="8" />
-                    <g transform="translate(8, 8) scale(0.35) translate(-8, -8)">
+                    <circle fill="white" cx="9" cy="9" r="9" />
+                    <g transform="translate(9, 9) scale(0.3) translate(-10, -10)">
                         {checked ? (
                             <path 
                                 d="M6 10L9 13L14 7"
