@@ -81,13 +81,25 @@ async function initThemes() {
         // Desktop: Load theme CSS directly instead of using @import with custom protocol
         // because Electron's CSS @import doesn't support custom protocols reliably
         for (const theme of enabledThemes) {
-            const themeData = await CeoCordNative.themes.getThemeData(theme);
-            if (!themeData) continue;
-            // Inject CSS directly into the style element
-            const style = document.createElement("style");
-            style.setAttribute("data-ceocord-theme", theme);
-            style.textContent = themeData;
-            userStyleRootNode.appendChild(style);
+            try {
+                const themeData = await CeoCordNative.themes.getThemeData(theme);
+                if (!themeData) {
+                    console.warn(`[CeoCord] Failed to load theme data for ${theme}`);
+                    continue;
+                }
+                // Inject CSS directly into the style element
+                const style = document.createElement("style");
+                style.setAttribute("data-ceocord-theme", theme);
+                style.textContent = themeData;
+                // Ensure userStyleRootNode is in the DOM
+                if (!userStyleRootNode.parentElement) {
+                    CeoCordRootNode.appendChild(userStyleRootNode);
+                }
+                userStyleRootNode.appendChild(style);
+                console.log(`[CeoCord] Loaded theme: ${theme}`);
+            } catch (err) {
+                console.error(`[CeoCord] Error loading theme ${theme}:`, err);
+            }
         }
     }
 
