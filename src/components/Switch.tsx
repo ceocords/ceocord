@@ -60,12 +60,12 @@ export function Switch({ checked, onChange, disabled }: SwitchProps) {
                     }}
                 >
                     <rect fill="white" x="4" y="0" height="20" width="20" rx="10" />
-                    <svg viewBox="0 0 20 20" fill="none" style={{ transform: "scale(0.55)", transformOrigin: "center" }}>
+                    <svg viewBox="0 0 20 20" fill="none" style={{ transform: "scale(0.5)", transformOrigin: "center" }}>
                         {checked ? (
                             <path 
                                 d="M6 10L9 13L14 7"
-                                stroke={SWITCH_ON}
-                                strokeWidth="2.5"
+                                stroke="white"
+                                strokeWidth="2.2"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                                 fill="none"
@@ -73,8 +73,8 @@ export function Switch({ checked, onChange, disabled }: SwitchProps) {
                         ) : (
                             <path 
                                 d="M7 7L13 13M13 7L7 13"
-                                stroke={SWITCH_OFF}
-                                strokeWidth="2"
+                                stroke="white"
+                                strokeWidth="1.8"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                                 fill="none"
