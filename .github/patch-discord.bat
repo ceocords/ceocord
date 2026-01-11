@@ -1,4 +1,4 @@
-"@echo off
+@echo off
 echo ========================================
 echo CeoCord Discord Patch Script
 echo ========================================
@@ -18,6 +18,18 @@ if exist "%APPDATA%\discord\Cache" (
 if exist "%LOCALAPPDATA%\Discord\Cache" (
     rmdir /s /q "%LOCALAPPDATA%\Discord\Cache" >nul 2>&1
     echo LocalAppData cache cleared.
+)
+if exist "%LOCALAPPDATA%\Discord\GPUCache" (
+    rmdir /s /q "%LOCALAPPDATA%\Discord\GPUCache" >nul 2>&1
+    echo GPUCache cleared.
+)
+if exist "%LOCALAPPDATA%\Discord\Code Cache" (
+    rmdir /s /q "%LOCALAPPDATA%\Discord\Code Cache" >nul 2>&1
+    echo Code Cache cleared.
+)
+if exist "%LOCALAPPDATA%\Discord\ShaderCache" (
+    rmdir /s /q "%LOCALAPPDATA%\Discord\ShaderCache" >nul 2>&1
+    echo ShaderCache cleared.
 )
 echo Cache cleared.
 echo.
