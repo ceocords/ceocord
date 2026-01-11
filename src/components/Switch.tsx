@@ -52,29 +52,29 @@ export function Switch({ checked, onChange, disabled }: SwitchProps) {
             <div className={classes(switchCls("container", { checked, disabled, focusVisible }))}>
                 <svg
                     className={switchCls("slider")}
-                    viewBox="0 0 16 16"
+                    viewBox="0 0 12 12"
                     preserveAspectRatio="xMidYMid meet"
                     aria-hidden="true"
                     style={{
-                        transform: checked ? "translateX(20px)" : "translateX(0px)",
+                        transform: checked ? "translateX(24px)" : "translateX(0px)",
                     }}
                 >
-                    <circle fill="white" cx="8" cy="8" r="8" />
-                    <svg viewBox="0 0 16 16" fill="none" x="0" y="0" width="16" height="16" style={{ transform: "scale(0.6)", transformOrigin: "center" }}>
+                    <circle fill="white" cx="6" cy="6" r="6" />
+                    <svg viewBox="0 0 12 12" fill="none" x="0" y="0" width="12" height="12" style={{ transform: "scale(0.5)", transformOrigin: "center" }}>
                         {checked ? (
                             <path 
-                                d="M4 8L6 10L12 4"
+                                d="M3 6L5 8L9 4"
                                 stroke={SWITCH_ON}
-                                strokeWidth="2"
+                                strokeWidth="1.8"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                                 fill="none"
                             />
                         ) : (
                             <path 
-                                d="M5 5L11 11M11 5L5 11"
+                                d="M4 4L8 8M8 4L4 8"
                                 stroke={SWITCH_OFF}
-                                strokeWidth="1.8"
+                                strokeWidth="1.5"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                                 fill="none"
