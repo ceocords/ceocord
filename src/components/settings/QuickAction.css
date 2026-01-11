@@ -1,12 +1,14 @@
 .vc-settings-quickActions-card {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    padding: 16px;
+    gap: 16px;
+    padding: 20px;
     margin-bottom: 20px;
-    background: var(--card-background-default);
-    border-radius: 8px;
-    border: 1px solid var(--border-subtle);
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.1) 0%, rgba(219, 39, 119, 0.15) 100%);
+    border-radius: 16px;
+    border: 1px solid rgba(236, 72, 153, 0.2);
+    box-shadow: 0 4px 20px rgba(236, 72, 153, 0.1), 0 0 0 1px rgba(236, 72, 153, 0.05);
+    backdrop-filter: blur(10px);
 }
 
 @media (width <=1040px) {
@@ -23,37 +25,62 @@
 
 .vc-settings-quickActions-pill {
     all: unset;
-    background: var(--background-secondary);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(236, 72, 153, 0.08) 100%);
     color: var(--text-default);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 16px 12px;
-    border-radius: 8px;
-    transition: all 0.15s ease-out;
+    gap: 10px;
+    padding: 20px 16px;
+    border-radius: 12px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     box-sizing: border-box;
     cursor: pointer;
-    border: 1px solid var(--border-subtle);
-    min-height: 80px;
+    border: 1px solid rgba(236, 72, 153, 0.15);
+    min-height: 90px;
+    position: relative;
+    overflow: hidden;
+}
+
+.vc-settings-quickActions-pill::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.1) 0%, rgba(219, 39, 119, 0.15) 100%);
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+    z-index: 0;
+}
+
+.vc-settings-quickActions-pill > * {
+    position: relative;
+    z-index: 1;
 }
 
 .vc-settings-quickActions-pill:hover {
-    background: var(--background-mod-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    border-color: var(--border-subtle);
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.15) 0%, rgba(219, 39, 119, 0.2) 100%);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(236, 72, 153, 0.25), 0 4px 12px rgba(219, 39, 119, 0.15);
+    border-color: rgba(236, 72, 153, 0.4);
+}
+
+.vc-settings-quickActions-pill:hover::before {
+    opacity: 1;
 }
 
 .vc-settings-quickActions-pill:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px) scale(1);
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.2), 0 2px 6px rgba(219, 39, 119, 0.1);
 }
 
 .vc-settings-quickActions-pill:focus-visible {
-    outline: 2px solid var(--border-focus);
+    outline: 2px solid rgba(236, 72, 153, 0.6);
     outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.2);
 }
 
 .vc-settings-quickActions-pill:disabled {
@@ -63,22 +90,32 @@
 }
 
 .vc-settings-quickActions-img {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     flex-shrink: 0;
-    color: var(--interactive-icon-default);
-    transition: color 0.15s ease-out;
+    color: rgba(236, 72, 153, 0.8);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 2px 4px rgba(236, 72, 153, 0.2));
 }
 
 .vc-settings-quickActions-pill:hover .vc-settings-quickActions-img {
-    color: var(--interactive-icon-hover);
+    color: rgb(236, 72, 153);
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 4px 8px rgba(236, 72, 153, 0.4));
 }
 
 .vc-settings-quickActions-pill > span,
 .vc-settings-quickActions-pill > *:not(.vc-settings-quickActions-img) {
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 600;
     text-align: center;
     line-height: 1.4;
     color: var(--text-default);
+    transition: color 0.2s ease-out;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.vc-settings-quickActions-pill:hover > span,
+.vc-settings-quickActions-pill:hover > *:not(.vc-settings-quickActions-img) {
+    color: rgba(236, 72, 153, 0.95);
 }
