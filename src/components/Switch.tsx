@@ -48,7 +48,7 @@ export function Switch({ checked, onChange, disabled }: SwitchProps) {
     };
 
     return (
-        <div>
+        <div className={switchCls("wrapper")}>
             <div className={classes(switchCls("container", { checked, disabled, focusVisible }))}>
                 <div
                     className={switchCls("slider")}
