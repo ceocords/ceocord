@@ -18,7 +18,7 @@
 
 import ErrorBoundary from "@components/ErrorBoundary";
 import { handleComponentFailed } from "@components/handleComponentFailed";
-import { ModalCloseButton, ModalContent, ModalProps, ModalRoot, ModalSize, openModal } from "@utils/modal";
+import { ModalCloseButton, ModalContent, ModalHeader, ModalProps, ModalRoot, ModalSize, openModal } from "@utils/modal";
 import { onlyOnce } from "@utils/onlyOnce";
 import type { ComponentType, PropsWithChildren } from "react";
 
@@ -49,8 +49,10 @@ export function openSettingsTabModal(Tab: ComponentType<any>) {
             
             return (
                 <ModalRoot {...modalProps} size={ModalSize.MEDIUM}>
-                    <ModalContent className="vc-settings-modal">
+                    <ModalHeader separator={false}>
                         <ModalCloseButton onClick={handleClose} className="vc-settings-modal-close" />
+                    </ModalHeader>
+                    <ModalContent className="vc-settings-modal">
                         <Tab />
                     </ModalContent>
                 </ModalRoot>
