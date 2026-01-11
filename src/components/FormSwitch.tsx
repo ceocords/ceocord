@@ -7,10 +7,11 @@
 import "./FormSwitch.css";
 
 import { classes } from "@utils/misc";
-import type { PropsWithChildren, ReactNode } from "react";
+import React, { type PropsWithChildren, type ReactNode } from "react";
 
 import { Divider } from "./Divider";
 import { Span } from "./Span";
+import { Switch } from "./Switch";
 
 export interface FormSwitchProps {
     title: ReactNode;
@@ -32,12 +33,10 @@ export function FormSwitch({ onChange, title, value, description, disabled, clas
                     {description && <Span size="sm" weight="normal">{description}</Span>}
                 </div>
 
-                <input
-                    type="checkbox"
+                <Switch
                     checked={value}
-                    onChange={e => onChange(e.currentTarget.checked)}
+                    onChange={onChange}
                     disabled={disabled}
-                    className="vc-form-switch-input"
                 />
             </div>
             {!hideBorder && <Divider className="vc-form-switch-border" />}
