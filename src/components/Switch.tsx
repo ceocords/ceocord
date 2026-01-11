@@ -52,28 +52,28 @@ export function Switch({ checked, onChange, disabled }: SwitchProps) {
             <div className={classes(switchCls("container", { checked, disabled, focusVisible }))}>
                 <svg
                     className={switchCls("slider")}
-                    viewBox="0 0 28 20"
-                    preserveAspectRatio="xMinYMid meet"
+                    viewBox="0 0 16 16"
+                    preserveAspectRatio="xMidYMid meet"
                     aria-hidden="true"
                     style={{
-                        transform: checked ? "translateX(12px)" : "translateX(-3px)",
+                        transform: checked ? "translateX(20px)" : "translateX(0px)",
                     }}
                 >
-                    <rect fill="white" x="4" y="0" height="20" width="20" rx="10" />
-                    <svg viewBox="0 0 20 20" fill="none" style={{ transform: "scale(0.5)", transformOrigin: "center" }}>
+                    <circle fill="white" cx="8" cy="8" r="8" />
+                    <svg viewBox="0 0 16 16" fill="none" x="0" y="0" width="16" height="16" style={{ transform: "scale(0.6)", transformOrigin: "center" }}>
                         {checked ? (
                             <path 
-                                d="M6 10L9 13L14 7"
-                                stroke="white"
-                                strokeWidth="2.2"
+                                d="M4 8L6 10L12 4"
+                                stroke={SWITCH_ON}
+                                strokeWidth="2"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                                 fill="none"
                             />
                         ) : (
                             <path 
-                                d="M7 7L13 13M13 7L7 13"
-                                stroke="white"
+                                d="M5 5L11 11M11 5L5 11"
+                                stroke={SWITCH_OFF}
                                 strokeWidth="1.8"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"

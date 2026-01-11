@@ -30,11 +30,11 @@
 
 .vc-switch-slider {
     display: block;
-    height: 20px;
+    height: 16px;
     left: 0;
-    margin: 3px;
+    margin: 4px;
     position: absolute;
-    width: 28px;
+    width: 16px;
     transition: 100ms transform ease-in-out;
     overflow: visible;
 }
