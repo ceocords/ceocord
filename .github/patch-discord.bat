@@ -5,7 +5,7 @@ echo ========================================
 echo.
 
 echo [1/6] Updating from GitHub...
-cd /d "%~dp0"
+cd /d "%~dp0\.."
 git pull origin master
 if errorlevel 1 (
     echo Warning: Git pull failed. Continuing with local version...
@@ -52,7 +52,7 @@ echo Cache cleared.
 echo.
 
 echo [5/6] Building CeoCord...
-cd /d "%~dp0"
+cd /d "%~dp0\.."
 call pnpm build
 if errorlevel 1 (
     echo Build failed! Press any key to exit...
