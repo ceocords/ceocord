@@ -60,7 +60,7 @@ export function Switch({ checked, onChange, disabled }: SwitchProps) {
                     }}
                 >
                     <rect fill="white" x="4" y="0" height="20" width="20" rx="10" />
-                    <svg viewBox="0 0 20 20" fill="none" style={{ transform: "scale(0.75)", transformOrigin: "center" }}>
+                    <svg viewBox="0 0 20 20" fill="none" style={{ transform: "scale(0.7)", transformOrigin: "center" }}>
                         {checked ? (
                             <path 
                                 d="M6 10L9 13L14 7"
