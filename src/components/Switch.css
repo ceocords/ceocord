@@ -1,5 +1,6 @@
 .vc-switch-wrapper {
     display: inline-block !important;
+    vertical-align: middle !important;
 }
 
 .vc-switch-container {
@@ -13,7 +14,11 @@
     width: 44px !important;
     min-width: 44px !important;
     min-height: 24px !important;
+    max-width: 44px !important;
+    max-height: 24px !important;
     display: inline-block !important;
+    vertical-align: middle !important;
+    flex-shrink: 0 !important;
 
     .high-contrast-mode & {
         border-color: var(--border-strong) !important;
@@ -45,7 +50,7 @@
     min-height: 18px !important;
     max-width: 18px !important;
     max-height: 18px !important;
-    background: white !important;
+    background: #ffffff !important;
     border-radius: 50% !important;
     -webkit-border-radius: 50% !important;
     -moz-border-radius: 50% !important;
@@ -58,6 +63,7 @@
     border: none !important;
     padding: 0 !important;
     margin: 0 !important;
+    box-sizing: border-box !important;
 }
 
 .vc-switch-slider svg {
