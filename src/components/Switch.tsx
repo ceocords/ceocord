@@ -53,9 +53,32 @@ export function Switch({ checked, onChange, disabled }: SwitchProps) {
                 <div
                     className={switchCls("slider")}
                     style={{
-                        transform: checked ? "translateX(14px)" : "translateX(2px)",
+                        transform: checked ? "translateX(20px)" : "translateX(2px)",
                     }}
-                />
+                >
+                    {checked && (
+                        <svg
+                            width="10"
+                            height="10"
+                            viewBox="0 0 10 10"
+                            fill="none"
+                            style={{
+                                position: "absolute",
+                                top: "50%",
+                                left: "50%",
+                                transform: "translate(-50%, -50%)",
+                            }}
+                        >
+                            <path
+                                d="M2 5L4 7L8 3"
+                                stroke="white"
+                                strokeWidth="1.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
+                        </svg>
+                    )}
+                </div>
                 <input
                     onFocus={handleFocusChange}
                     onBlur={handleFocusChange}

@@ -1,12 +1,12 @@
 .vc-switch-container {
     background: var(--primary-400);
     border: 1px solid transparent;
-    border-radius: 10px;
+    border-radius: 12px;
     box-sizing: border-box;
     cursor: pointer;
-    height: 20px;
+    height: 24px;
     position: relative;
-    width: 40px;
+    width: 44px;
 
     .high-contrast-mode & {
         border-color: var(--border-strong);
@@ -29,20 +29,22 @@
 }
 
 .vc-switch-slider {
-    display: block;
-    height: 16px;
-    width: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 18px;
+    width: 18px;
     background: white;
     border-radius: 50%;
     position: absolute;
-    top: 2px;
+    top: 3px;
     left: 0;
     transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .vc-switch-input {
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
     height: 100%;
     left: 0;
