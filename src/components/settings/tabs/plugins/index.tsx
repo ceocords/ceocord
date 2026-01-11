@@ -45,7 +45,7 @@ import { UIElementsButton } from "./UIElements";
 export const cl = classNameFactory("vc-plugins-");
 export const logger = new Logger("PluginSettings", "#a6d189");
 
-function ReloadRequiredCard({ required }: { required: boolean; }) {
+function ReloadRequiredCard({ required, pluginNames }: { required: boolean; pluginNames?: string[]; }) {
     return (
         <Card variant={required ? "warning" : "normal"} className={cl("info-card")}>
             {required
@@ -53,7 +53,9 @@ function ReloadRequiredCard({ required }: { required: boolean; }) {
                     <>
                         <HeadingTertiary>Restart required!</HeadingTertiary>
                         <Paragraph className={cl("dep-text")}>
-                            Restart now to apply new plugins and their settings
+                            {pluginNames && pluginNames.length > 0
+                                ? `The following plugins require a restart: ${pluginNames.map(name => name.split(".")[0]).join(", ")}`
+                                : "Restart now to apply new plugins and their settings"}
                         </Paragraph>
                         <Button onClick={() => location.reload()} className={cl("restart-button")}>
                             Restart
@@ -116,27 +118,6 @@ function ExcludedPluginsList({ search }: { search: string; }) {
 function PluginSettings() {
     const settings = useSettings();
     const changes = useMemo(() => new ChangeList<string>(), []);
-
-    useCleanupEffect(() => {
-        if (changes.hasChanges)
-            Alerts.show({
-                title: "Restart required",
-                body: (
-                    <>
-                        <p>The following plugins require a restart:</p>
-                        <div>{changes.map((s, i) => (
-                            <>
-                                {i > 0 && ", "}
-                                {Parser.parse("`" + s.split(".")[0] + "`")}
-                            </>
-                        ))}</div>
-                    </>
-                ),
-                confirmText: "Restart now",
-                cancelText: "Later!",
-                onConfirm: () => location.reload()
-            });
-    }, []);
 
     const depMap = useMemo(() => {
         const o = {} as Record<string, string[]>;
@@ -257,9 +238,11 @@ function PluginSettings() {
         }
     }
 
+    const restartPluginNames = changes.hasChanges ? Array.from(changes) : [];
+
     return (
         <SettingsTab>
-            <ReloadRequiredCard required={changes.hasChanges} />
+            <ReloadRequiredCard required={changes.hasChanges} pluginNames={restartPluginNames} />
 
             <UIElementsButton />
 
