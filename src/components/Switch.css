@@ -134,8 +134,21 @@
 
 /* Hide any Discord checkbox that might be rendered */
 .vc-form-switch-wrapper input[type="checkbox"]:not(.vc-switch-input),
-.vc-addon-card input[type="checkbox"]:not(.vc-switch-input) {
+.vc-addon-card input[type="checkbox"]:not(.vc-switch-input),
+.vc-form-switch input[type="checkbox"]:not(.vc-switch-input) {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
+    position: absolute !important;
+    width: 0 !important;
+    height: 0 !important;
+    clip: rect(0, 0, 0, 0) !important;
+}
+
+/* Force Switch component to be visible */
+.vc-switch-wrapper,
+.vc-switch-container {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
