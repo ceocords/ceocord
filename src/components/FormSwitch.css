@@ -1,11 +1,21 @@
 .vc-form-switch-wrapper {
     margin-bottom: 20px;
     cursor: pointer;
+    position: relative;
 }
+
+/* Use Discord's native checkbox styling - let Discord handle the toggle switch appearance */
+.vc-form-switch-input {
+    /* Discord's native checkbox will handle the toggle switch styling */
+    cursor: pointer;
+}
+
+/* Use Discord's native checkbox - no custom Switch component */
 
 .vc-form-switch {
     display: flex;
     width: 100%;
+    position: relative;
 
     > :last-child {
         margin-left: auto;
@@ -28,3 +38,5 @@
 .vc-form-switch-border {
     margin-top: 20px;
 }
+
+/* Use Discord's native checkbox styling */

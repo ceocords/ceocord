@@ -21,6 +21,7 @@ import "./styles.css";
 import * as DataStore from "@api/DataStore";
 import { isPluginEnabled } from "@api/PluginManager";
 import { useSettings } from "@api/Settings";
+import { Button as CeoCordButton } from "@components/Button";
 import { Card } from "@components/Card";
 import { Divider } from "@components/Divider";
 import ErrorBoundary from "@components/ErrorBoundary";
@@ -57,9 +58,14 @@ function ReloadRequiredCard({ required, pluginNames }: { required: boolean; plug
                                 ? `The following plugins require a restart: ${pluginNames.map(name => name.split(".")[0]).join(", ")}`
                                 : "Restart now to apply new plugins and their settings"}
                         </Paragraph>
-                        <Button onClick={() => location.reload()} className={cl("restart-button")}>
+                        <CeoCordButton
+                            onClick={() => location.reload()}
+                            variant="primary"
+                            size="medium"
+                            className={cl("restart-button")}
+                        >
                             Restart
-                        </Button>
+                        </CeoCordButton>
                     </>
                 )
                 : (

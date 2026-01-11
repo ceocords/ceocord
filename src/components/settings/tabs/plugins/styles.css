@@ -77,7 +77,20 @@
 
 .vc-plugins-restart-button {
     margin-top: 0.5em;
-    background: var(--icon-status-idle) !important;
+    align-self: flex-start;
+    min-width: 96px;
+    height: 38px;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vc-plugins-restart-button:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.vc-plugins-restart-button:active {
+    transform: translateY(1px);
 }
 
 .vc-plugins-info-icon:not(:hover, :focus) {
