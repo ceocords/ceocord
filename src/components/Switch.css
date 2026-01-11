@@ -4,9 +4,9 @@
     border-radius: 10px;
     box-sizing: border-box;
     cursor: pointer;
-    height: 18px;
+    height: 20px;
     position: relative;
-    width: 28px;
+    width: 40px;
 
     .high-contrast-mode & {
         border-color: var(--border-strong);
@@ -30,13 +30,15 @@
 
 .vc-switch-slider {
     display: block;
-    height: 12px;
-    left: 0;
-    margin: 3px;
+    height: 16px;
+    width: 16px;
+    background: white;
+    border-radius: 50%;
     position: absolute;
-    width: 12px;
-    transition: 100ms transform ease-in-out;
-    overflow: visible;
+    top: 2px;
+    left: 0;
+    transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .vc-switch-input {
