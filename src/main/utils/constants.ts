@@ -19,9 +19,9 @@
 import { app } from "electron";
 import { join } from "path";
 
-export const DATA_DIR = process.env.CeoCord_USER_DATA_DIR ?? (
+export const DATA_DIR = process.env.VENCORD_USER_DATA_DIR ?? process.env.CeoCord_USER_DATA_DIR ?? (
     process.env.DISCORD_USER_DATA_DIR
-        ? join(process.env.DISCORD_USER_DATA_DIR, "..", "VencordData")
+        ? join(process.env.DISCORD_USER_DATA_DIR, "..", "CeoCordData")
         : join(app.getPath("userData"), "..", "CeoCord")
 );
 export const SETTINGS_DIR = join(DATA_DIR, "settings");
