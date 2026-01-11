@@ -1,10 +1,20 @@
-/* GLOBAL OVERRIDE: Hide ALL Discord checkboxes in CeoCord settings */
+/* GLOBAL OVERRIDE: Hide ALL Discord checkboxes in CeoCord settings - ULTRA AGGRESSIVE */
 .vc-form-switch-wrapper input[type="checkbox"],
 .vc-form-switch-wrapper > input,
 .vc-form-switch input[type="checkbox"],
 .vc-form-switch > input,
 label.vc-form-switch-wrapper input,
-label.vc-form-switch-wrapper > input {
+label.vc-form-switch-wrapper > input,
+/* Hide ALL checkboxes inside FormSwitch labels */
+label.vc-form-switch-wrapper input[type="checkbox"]:not(.vc-switch-input),
+label.vc-form-switch-wrapper > input[type="checkbox"]:not(.vc-switch-input),
+/* Hide Discord's native checkbox classes */
+input._3f21e80f8677ec40-input,
+input[class*="_3f21e80f8677ec40-input"],
+.vc-form-switch-wrapper input._3f21e80f8677ec40-input,
+.vc-form-switch-wrapper input[class*="_3f21e80f8677ec40-input"],
+.vc-form-switch input._3f21e80f8677ec40-input,
+.vc-form-switch input[class*="_3f21e80f8677ec40-input"] {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
@@ -17,6 +27,9 @@ label.vc-form-switch-wrapper > input {
     clip: rect(0, 0, 0, 0) !important;
     pointer-events: none !important;
     z-index: -1 !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
 }
 
 .vc-switch-wrapper {
@@ -230,6 +243,34 @@ label[class*="formSwitch"] > input,
     z-index: 99999 !important;
     position: relative !important;
     pointer-events: auto !important;
+    width: 44px !important;
+    height: 24px !important;
+    min-width: 44px !important;
+    min-height: 24px !important;
+}
+
+/* CRITICAL: Hide ALL checkboxes inside FormSwitch labels EXCEPT our Switch input */
+label.vc-form-switch-wrapper > input[type="checkbox"]:not(.vc-switch-input),
+label.vc-form-switch-wrapper input[type="checkbox"]:not(.vc-switch-input),
+.vc-form-switch-wrapper > input[type="checkbox"]:not(.vc-switch-input),
+.vc-form-switch-wrapper input[type="checkbox"]:not(.vc-switch-input),
+.vc-form-switch > input[type="checkbox"]:not(.vc-switch-input),
+.vc-form-switch input[type="checkbox"]:not(.vc-switch-input) {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    position: absolute !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    clip: rect(0, 0, 0, 0) !important;
+    pointer-events: none !important;
+    z-index: -1 !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
 }
 
 /* Ensure Switch slider is visible */
@@ -321,7 +362,12 @@ input[class*="_3f21e80f8677ec40-input"]:not(.vc-switch-input),
 /* Hide ALL checkboxes in CeoCord settings that are not our Switch component */
 .vc-settings-tab input[type="checkbox"]:not(.vc-switch-input):not(.vc-switch-container input),
 .vc-form-switch-wrapper input[type="checkbox"]:not(.vc-switch-input):not(.vc-switch-container input),
-.vc-form-switch input[type="checkbox"]:not(.vc-switch-input):not(.vc-switch-container input) {
+.vc-form-switch input[type="checkbox"]:not(.vc-switch-input):not(.vc-switch-container input),
+/* ULTRA AGGRESSIVE: Hide ALL checkboxes inside FormSwitch labels */
+label.vc-form-switch-wrapper input[type="checkbox"]:not(.vc-switch-input),
+label.vc-form-switch-wrapper > input[type="checkbox"]:not(.vc-switch-input),
+label.vc-form-switch-wrapper input:not(.vc-switch-input),
+label.vc-form-switch-wrapper > input:not(.vc-switch-input) {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
@@ -337,4 +383,22 @@ input[class*="_3f21e80f8677ec40-input"]:not(.vc-switch-input),
     appearance: none !important;
     -webkit-appearance: none !important;
     -moz-appearance: none !important;
+}
+
+/* CRITICAL: Ensure Switch component is ALWAYS visible and properly sized */
+.vc-form-switch-wrapper .vc-switch-wrapper,
+.vc-form-switch-wrapper .vc-switch-container {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 999999 !important;
+    position: relative !important;
+    pointer-events: auto !important;
+    width: 44px !important;
+    height: 24px !important;
+    min-width: 44px !important;
+    min-height: 24px !important;
+    max-width: 44px !important;
+    max-height: 24px !important;
+    flex-shrink: 0 !important;
 }

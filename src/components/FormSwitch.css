@@ -4,6 +4,28 @@
     position: relative;
 }
 
+/* Hide any Discord checkboxes that might be rendered */
+.vc-form-switch-wrapper input[type="checkbox"],
+.vc-form-switch-wrapper > input,
+.vc-form-switch-wrapper label input[type="checkbox"],
+.vc-form-switch-wrapper label > input {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    position: absolute !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    clip: rect(0, 0, 0, 0) !important;
+    pointer-events: none !important;
+    z-index: -1 !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+}
+
 /* FormSwitch now uses Switch component, so we don't need checkbox styling here */
 
 .vc-form-switch {

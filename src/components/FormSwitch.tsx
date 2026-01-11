@@ -25,8 +25,15 @@ export interface FormSwitchProps {
 }
 
 export function FormSwitch({ onChange, title, value, description, disabled, className, hideBorder }: FormSwitchProps) {
+    const handleClick = (e: React.MouseEvent) => {
+        if (disabled) return;
+        e.preventDefault();
+        e.stopPropagation();
+        onChange(!value);
+    };
+
     return (
-        <label className="vc-form-switch-wrapper">
+        <div className="vc-form-switch-wrapper" onClick={handleClick} style={{ cursor: disabled ? "not-allowed" : "pointer" }}>
             <div className={classes("vc-form-switch", className, disabled && "vc-form-switch-disabled")}>
                 <div className={"vc-form-switch-text"}>
                     <Span size="md" weight="medium">{title}</Span>
@@ -40,7 +47,7 @@ export function FormSwitch({ onChange, title, value, description, disabled, clas
                 />
             </div>
             {!hideBorder && <Divider className="vc-form-switch-border" />}
-        </label>
+        </div>
     );
 }
 
