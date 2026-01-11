@@ -185,8 +185,8 @@ async function init() {
     }
 }
 
-// Expose CeoCord to window for web access
-if (IS_WEB || IS_EXTENSION) {
+// Expose CeoCord to window for web and desktop access
+if (IS_WEB || IS_EXTENSION || IS_DISCORD_DESKTOP) {
     window.CeoCord = {
         Api,
         Plugins,
