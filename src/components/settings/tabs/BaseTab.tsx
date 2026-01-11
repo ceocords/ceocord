@@ -49,10 +49,8 @@ export function openSettingsTabModal(Tab: ComponentType<any>) {
             
             return (
                 <ModalRoot {...modalProps} size={ModalSize.MEDIUM}>
-                    <ModalHeader separator={false}>
-                        <ModalCloseButton onClick={handleClose} className="vc-settings-modal-close" />
-                    </ModalHeader>
                     <ModalContent className="vc-settings-modal">
+                        <ModalCloseButton onClick={handleClose} className="vc-settings-modal-close" />
                         <Tab />
                     </ModalContent>
                 </ModalRoot>

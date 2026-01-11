@@ -66,5 +66,8 @@
 }
 
 .vc-settings-modal-close {
-    float: right;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    z-index: 1000;
 }
