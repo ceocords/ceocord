@@ -53,24 +53,32 @@ export function AddonCard({ disabled, isNew, name, infoButton, footer, author, e
         >
             <div className={cl("header")}>
                 <div className={cl("name-author")}>
-                    <Text variant="text-md/bold" className={cl("name")}>
-                        <div ref={titleContainerRef} className={cl("title-container")}>
-                            <div
-                                ref={titleRef}
-                                className={cl("title")}
-                                onMouseOver={() => {
-                                    const title = titleRef.current!;
-                                    const titleContainer = titleContainerRef.current!;
+                    <div style={{ display: "flex", alignItems: "center", gap: "12px", width: "100%" }}>
+                        <Text variant="text-md/bold" className={cl("name")} style={{ flex: 1, minWidth: 0 }}>
+                            <div ref={titleContainerRef} className={cl("title-container")}>
+                                <div
+                                    ref={titleRef}
+                                    className={cl("title")}
+                                    onMouseOver={() => {
+                                        const title = titleRef.current!;
+                                        const titleContainer = titleContainerRef.current!;
 
-                                    title.style.setProperty("--offset", `${titleContainer.clientWidth - title.scrollWidth}px`);
-                                    title.style.setProperty("--duration", `${Math.max(0.5, (title.scrollWidth - titleContainer.clientWidth) / 7)}s`);
-                                }}
-                            >
-                                {name}
+                                        title.style.setProperty("--offset", `${titleContainer.clientWidth - title.scrollWidth}px`);
+                                        title.style.setProperty("--duration", `${Math.max(0.5, (title.scrollWidth - titleContainer.clientWidth) / 7)}s`);
+                                    }}
+                                >
+                                    {name}
+                                </div>
                             </div>
-                        </div>
-                        {isNew && <AddonBadge text="NEW" color="#ED4245" />}
-                    </Text>
+                            {isNew && <AddonBadge text="NEW" color="#ED4245" />}
+                        </Text>
+
+                        <Switch
+                            checked={enabled}
+                            onChange={setEnabled}
+                            disabled={disabled}
+                        />
+                    </div>
 
                     {!!author && (
                         <Text variant="text-md/normal" className={cl("author")}>
@@ -80,12 +88,6 @@ export function AddonCard({ disabled, isNew, name, infoButton, footer, author, e
                 </div>
 
                 {infoButton}
-
-                <Switch
-                    checked={enabled}
-                    onChange={setEnabled}
-                    disabled={disabled}
-                />
             </div>
 
             <Text className={cl("note")} variant="text-sm/normal">{description}</Text>
